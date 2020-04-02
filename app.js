@@ -3,9 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-if (process.env.NODE_ENV === 'production') {
-  require('@google-cloud/debug-agent').start({ allowExpressions: true })
-}
+require('@google-cloud/trace-agent').start();
+require('@google-cloud/debug-agent').start({ allowExpressions: true })
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
